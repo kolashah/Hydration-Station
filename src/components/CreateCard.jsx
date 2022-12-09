@@ -11,7 +11,7 @@ const useInput = (init) => {
   return [value, onChange];
 };
 
-const CreateCard = ({setData}) => {
+const CreateCard = ({ setData }) => {
   const [name, nameOnChange] = useInput('');
   const [room, roomOnChange] = useInput('');
   const [watered, wateredOnChange] = useInput('');
@@ -23,32 +23,27 @@ const CreateCard = ({setData}) => {
   // const [isLoaded, setIsLoaded] = useState(false);
 
   const savePlant = () => {
-    if (name === '') 
-      setNameError('required');
-    if (room === '') 
-      setRoomError('required');
-    if (isNaN(watered)) 
-      setWateredError('must be a number');
-    
-      const body = { name, room, watered: parseInt(watered) };
+    if (name === '') setNameError('required');
+    if (room === '') setRoomError('required');
+    if (isNaN(watered)) setWateredError('must be a number');
 
+    const body = { name, room, watered: parseInt(watered) };
 
-      fetch(`http://localhost:3000/api/newplant`, {
-        method: 'POST',
-        // mode: 'cors',
-        headers: { 'Content-type': 'Application/JSON' },
-        body: JSON.stringify(body),
-      })
-        .then((res) => res.json())
-        .then(window.location.reload(false))
+    fetch(`http://localhost:3000/api/newplant`, {
+      method: 'POST',
+      // mode: 'cors',
+      headers: { 'Content-type': 'Application/JSON' },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then(window.location.reload(false))
 
-        .then((data) => {
-          // const {name, room, daysSinceWater} = data
-          setData(data);
-          // setIsLoaded(true);
-        });
-    }
-  
+      .then((data) => {
+        // const {name, room, daysSinceWater} = data
+        setData(data);
+        // setIsLoaded(true);
+      });
+  };
 
   return (
     <div id="cardMaker">
@@ -77,7 +72,7 @@ const CreateCard = ({setData}) => {
       <button id="addplant" onClick={savePlant}>
         Add Plant{' '}
       </button>
-      {document.getElementsByTagName('input').value = ''}
+      {(document.getElementsByTagName('input').value = '')}
     </div>
   );
 };
