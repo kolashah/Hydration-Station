@@ -1,23 +1,28 @@
 const mongoose = require('mongoose');
+
+const MONGO_URI = 'mongodb+srv://kolashah:plantpassword@cluster0.h35s0uw.mongodb.net/?retryWrites=true&w=majority'
+
+mongoose
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: 'plants',
+  })
+  .then(() => console.log('Connected to Mongo DB.'))
+  .catch((err) => console.log(err));
+
 const Schema = mongoose.Schema
 
-// mongoose.connect('mongodb://localhost:27017/plantsDB');
 
 const plantSchema = new Schema({
-  name: {type: String, required: true},
-  room: {type: String, required: true}
-})
+  name: { type: String, required: true },
+  room: { type: String, required: true },
+  daysSinceWater: { type: Number, required: true },
+});
 
+const Plants = mongoose.model('Plants', plantSchema)
 
-module.exports = mongoose.model('Plant', plantSchema)
+module.exports = Plants;
 
-// const Plant = mongoose.model('plant', plantSchema)
-
-// const plant = new Plant({
-//   name: "Chinese Money Tree",
-//   room: "Study"
-// });
-
-// plant.save()
 
 

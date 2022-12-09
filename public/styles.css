@@ -1,0 +1,147 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #285430;
+}
+
+
+body,
+.container {
+  background: #A4BE7B;
+  /* padding: 0 16px; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 10px;
+}
+.container {
+  margin-left: 300px;
+
+}
+
+.groot {
+  width: 100px;
+  height: 100px;
+}
+
+.body {
+  display: flex;
+}
+
+#cardMaker {
+  display: flex;
+  flex-direction: column;
+  background-color: #5F8D4E;
+  padding: 25px;
+  margin: 35px 15px;
+  border-radius: 15px;
+  height: 300px;
+  position: fixed;
+
+}
+
+.card {
+  border-radius: 7px;
+  padding: 10px;
+  width: 150px;
+  height: 200px;
+  margin: 16px;
+  font-size: .75em;
+  background-color: #E5D9B6;
+  border: 1px solid #E5D9B6;
+  box-shadow: 0 2px 5px #5F8D4E;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  position: relative;
+width: 175px;
+  height: 225px;
+    margin: 2px;
+
+}
+
+
+.updateWater {
+    background-color: #5F8D4E ;
+    border: 1px solid #5F8D4E;
+    color: white;
+    margin-bottom: 15px;
+    height: 20px;
+      cursor: pointer;
+
+}
+.errorMsg {
+  font-size: 14px;
+  width: min-content;
+  color:rgb(144, 18, 18);
+  /* margin-bottom: 15px;   */
+  position: relative;
+  bottom: 15px;
+  left: 5px;
+}
+
+#addplant {
+  height: 30px;
+  background-color: #5F8D4E ;
+    border: 1px solid #285430;
+  color: #285430;
+}
+
+#addplant:hover {
+    border: 1px solid #19351e;
+    cursor: pointer;
+
+}
+
+.delete {
+  background-color: #E5D9B6;
+  border: 1px solid rgb(181, 149, 149);
+  width: 100px;
+  height: 20px;
+  color: rgb(181, 149, 149);  
+  align-items: right;
+  cursor: pointer;
+  align-self: center;
+
+
+}
+button {
+  border-radius: 15px;;
+}
+
+input {
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  background-color: rgba(252, 252, 252, 0.2);
+  width: 250px;
+  border-radius: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  font-weight: 300;
+  margin-bottom: 15px;
+  height: 30px;
+
+}
+

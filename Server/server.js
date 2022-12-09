@@ -1,34 +1,32 @@
 const path = require('path');
-const express = require('express')
-const mongoose = require('mongoose');
-// const bodyParser = require('body-parser');
-
-
-const PlantController = require('./controllers/plantController')
-
+const express = require('express');
+const cors = require('cors')
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-mongoose.connection.once('open', () => {
-  console.log('Connected to Database');
-});
+const apiRouter = require('./routes/api');
 
+const PORT = 3000;
 
-app.use(express.urlencoded({ extended: true }))
+//handle parsing request body
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors()) 
+// * handle requests for static files
+app.use(express.static(path.resolve(__dirname, '../public/index.html')));
 
-app.get("/", function (req, res) {
-  res.sendFile(path.resolve(__dirname, '../dist/index.html'))
+// app.get("/", function (req, res) {
+//   res.sendFile(path.resolve(__dirname, '../dist/index.html'))
+// });
+app.use('/api', apiRouter);
+
+// app.post('/newplant', PlantController.createNewPlant, (req, res) => {
+//   return res.status(200).json(res.locals.newPlant)
+// });
+
+app.use('*', (req, res) => {
+  return res.status(404).send("This is not the page you're looking for...");
 });
-
-app.post('/newplant', PlantController.createNewPlant, (req, res) => {
-  return res.send('works')
-});
-
-
-app.use((req, res) => res.sendStatus(404));
-
 
 // Global error handler
 app.use((err, req, res, next) => {
@@ -44,5 +42,4 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
 
-
-// module.exports = app;
+module.exports = app;
